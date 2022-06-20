@@ -18,13 +18,14 @@ return        c.Country.toLowerCase().includes(search.toLowerCase())
     return (
 
         <div className="container">
-            <h1>Corona Details</h1>
+            {/* <h1>Made by Vihang Patel</h1> */}
+            <h1 className='text-dark'>Corona Details </h1>
             <div className="coin-search row " >
-                <form action="" className="col-12" >
+                <form action="" className="col-12  mb-4" >
                     <input
                         type="text"
                         className="coin-input"
-                        placeholder="type the coin name"
+                        placeholder="Type the Country name"
                         onChange={handleChange}
                     />
                 </form>
@@ -66,7 +67,7 @@ return        c.Country.toLowerCase().includes(search.toLowerCase())
 
                 </tbody>
             </table>
-            <h3>Resize Me</h3>
+            
         </div>
 
     )
