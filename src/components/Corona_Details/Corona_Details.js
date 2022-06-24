@@ -1,12 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDotCircle } from '@fortawesome/free-solid-svg-icons'
-import "../App.css"
+import '../../App.css'
 import React from "react";
 import { useEffect, useState } from "react";
 // import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { Getdata } from "../Redux/Actions/Action";
-import Table from "./Table";
+import { Getdata } from "../../Redux/actions/action";
+import Table from "../Table/Table";
 function Corona_Details({ getdataAction, data }) {
   console.log("data----->", data);
   let res = data.Countries;
@@ -16,10 +16,14 @@ function Corona_Details({ getdataAction, data }) {
 
   }, []);
 
-
+let response = (value) =>{
+  return data && data.filter((e)=>{
+    return e.Country.toLowecase().includes(value.toLowerCase());
+  })
+}
 
   const [selected, setSelected] = useState("");
-  const [TotalConfirmed, setTotalConfirmed] = useState("")
+  // const [TotalConfirmed, setTotalConfirmed] = useState("")
 
   const handleChange = event => {
     console.log(event.target.value);
@@ -30,7 +34,7 @@ function Corona_Details({ getdataAction, data }) {
 
     <>
       <div className="jumbotron">
-      <span>Select Country - </span>
+        <span>Select Country - </span>
         {/* When you use array function, make sure you check if array length is > 0 */}
         <select value={selected} onChange={handleChange}>
           {res && res.length > 0 && res.map((e) => {
@@ -50,15 +54,15 @@ function Corona_Details({ getdataAction, data }) {
             <b className='blink_me'><FontAwesomeIcon icon={faDotCircle} /></b> Live
           </div>
 
-          <div class="container">
-            <div class="row">
+          <div className="container">
+            <div className="row">
 
 
 
 
-              <div class="col-sm">
+              <div className="col-sm">
                 {res && res.length > 0 && res.map((e, i) => {
-                  {/* console.log(i, "index") */}
+                  {/* console.log(i, "index") */ }
                   if (selected == e.Country) {
                     return (
                       <>
@@ -71,25 +75,25 @@ function Corona_Details({ getdataAction, data }) {
                       </>
                     )
 
-                  }else if (selected == "" & i == 0){
+                  } else if (selected == "" & i == 0) {
                     return (
                       <>
                         {e.TotalConfirmed}
                       </>
                     )
                   }
-                  
+
                 })}
 
 
-                  {console.log(selected,"selected")}
+                {console.log(selected, "selected")}
 
                 <div className="bg-danger text-white">Confirmed</div>    </div>
 
 
-              <div class="col-sm">
+              <div className="col-sm">
                 {res && res.length > 0 && res.map((e, i) => {
-                  {/* console.log(i, "index") */}
+                  {/* console.log(i, "index") */ }
                   if (selected == e.Country) {
                     return (
                       <>
@@ -102,7 +106,7 @@ function Corona_Details({ getdataAction, data }) {
                       </>
                     )
 
-                  }else if (selected == "" & i == 0){
+                  } else if (selected == "" && i == 0) {
                     return (
                       <>
                         {e.TotalDeaths}
@@ -128,7 +132,7 @@ function Corona_Details({ getdataAction, data }) {
         </div>
       </div>
       <div>
-        <Table data={res} />
+        <Table data={res} response = { response} />
       </div>
 
     </>

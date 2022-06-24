@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Corona_details from "./Components/Corona_details"
+import Corona_details from "./components/Corona_Details/Corona_Details"
 
 function App() {
   return (

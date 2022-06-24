@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux'
-import CorReducer from "../Reducers/Reducers"
+import CorReducer from "./reducers"
 
 
 
